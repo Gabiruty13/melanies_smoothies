@@ -3,7 +3,7 @@ import streamlit as st
 from snowflake.snowpark.functions import col
 import requests
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response)
+
 
 cnx = st.connection ("snowflake")
 session = cnx.session()
@@ -32,6 +32,7 @@ ingredients_list = st.multiselect(
     'Choose up to 5 ingredients:' 
     ,my_dataframe
 )
+st.text(smoothiefroot_response.json)
 if ingredients_list:
     
     ingredients_string = ''
